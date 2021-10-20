@@ -6,25 +6,26 @@ using System.Threading;
 
 namespace Task2
 {
-    //\d Определяет символы цифр. 
-    //\D Определяет любой символ, который не является цифрой. 
-    //\w Определяет любой символ цифры, буквы или подчеркивания.
-    //\W Определяет любой символ, который не является цифрой, буквой или подчеркиванием.
-    //\s Определяет любой непечатный символ, включая пробел. 
-    //\S Определяет любой символ, кроме символов табуляции, новой строки и возврата каретки.
-    // .Определяет любой символ кроме символа новой строки.
-    //\.    Определяет символ точки.
+    // \ d Specifies numeral characters.
+    // \ D Specifies any character that is not a digit.
+    // \ w Specifies any digit, letter, or underscore character.
+    // \ W Specifies any character that is not a number, letter, or underscore.
+    // \ s Specifies any non-printable character, including space.
+    // \ S Specifies any character except tab, newline, and carriage return.
+    // \. Definition of the point symbol.
 
-
+    /// <summary>
+    /// Save <file>.html of the list of person's friends
+    /// </summary>
     class Program
     {                                       
         static void Main(string[] args)
         {
-            FileStream stream = new FileStream(@"D:\Пользователи\Documents\LivyantFriends.html", FileMode.Open, FileAccess.Read);
+            FileStream stream = new FileStream(@"SomePath\SomeFriend.html", FileMode.Open, FileAccess.Read);
             var regex = new Regex(@"<a href=\u0022(?<id>\S+)\u0022 onclick=\u0022return nav.go\(this, event\);\u0022>(?<name>\S+)\s(?<surname>\S+)</a>" +
                 @"|<a href=\u0022(?<id>\S+)\u0022>(?<name>\S+)\s(?<surname>\S+)</a>");
             StreamReader reader = new StreamReader(stream);
-            FileStream stream1 = new FileStream(@"D:\Пользователи\Documents\TestOutPut.txt", FileMode.Create, FileAccess.ReadWrite);
+            FileStream stream1 = new FileStream(@"SomePath\OutPut.txt", FileMode.Create, FileAccess.ReadWrite);
             StreamWriter writer = new StreamWriter(stream1);
             string inputString = reader.ReadToEnd();
             int index = 1;
